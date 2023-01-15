@@ -29,6 +29,7 @@ import GuestProfile from './screens/community/guestProfile';
 import NewPost from './screens/community/newPost';
 import SideMenu from './components/sideMenu';
 import Trending from './screens/Trending';
+import WellnessDetails from './components/homeSlider/wellnessDetails';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,6 +40,7 @@ const FirstScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="WellnessDetails" component={WellnessDetails} />
     </Stack.Navigator>
   );
 };

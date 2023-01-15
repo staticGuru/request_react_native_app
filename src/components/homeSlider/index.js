@@ -11,6 +11,7 @@ import {RenderTips} from './renderTips';
 import RenderTrending from './renderTrending';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {data} from './data';
+import RenderCenter from './renderCenter';
 export const SLIDER_HEIGHT = Dimensions.get('screen').height * 0.8;
 export const ITEM_HEIGHT = SLIDER_HEIGHT;
 
@@ -26,6 +27,7 @@ const renderItem = ({item}) => {
       {item.type == 'program' && <RenderProgram item={item.content} />}
       {item.type == 'featured' && <RenderFeaturedProgram item={item.content} />}
       {item.type == 'highlights' && <RenderHighlights item={item.content} />}
+      {item.type == 'wellness' && <RenderCenter item={item.content} />}
 
     </View>
   );
