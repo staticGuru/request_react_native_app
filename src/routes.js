@@ -177,7 +177,7 @@ const TabNavigator = () => {
             borderBottomRightRadius:hp('7%'),
             height: hp('6%'),
             position: 'absolute',
-            bottom: hp('1.75%'),
+            bottom: hp('1.5%'),
             backgroundColor: Colors.secondary,
             zIndex:100
           },
@@ -271,7 +271,7 @@ const Routes = () => {
 
   return (
     <AuthContext.Provider value={authContext}>
-      {state.userToken == null ? <AuthScreens /> : <DrawerNavigator />}
+      {state.userToken != null ? <AuthScreens /> : <DrawerNavigator />}
     </AuthContext.Provider>
   );
 };
