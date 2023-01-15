@@ -11,72 +11,37 @@ import {
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../../util/Colors';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export const SLIDER_WIDTH = Dimensions.get('screen').width - wp('8%');
 export const ITEM_WIDTH = SLIDER_WIDTH;
 
-const renderItem = (item,wished,setWished) => {
+const renderItem = (item, wished, setWished) => {
   return (
     <View key={item.id} style={styles.itemContainer}>
       <View style={styles.imageContainer}>
-        <Image source={{uri: item.image}} style={styles.image} resizeMode="cover" />
+        <Image
+          source={{uri: item.image}}
+          style={styles.image}
+          resizeMode="cover"
+        />
         <Icon
           name="heart"
           size={hp('3%')}
-          onPress={()=>setWished(!wished)}
-          color={wished?Colors.yellow:Colors.primary}
+          onPress={() => setWished(!wished)}
+          color={wished ? Colors.yellow : Colors.primary}
           style={styles.wishListImage}
         />
-      </View>
-      <View style={styles.textContainer}>
-        <View style={styles.quoteContainer}>
-          <Image source={{uri: item.image}} style={styles.quoteImage} resizeMode="stretch" />
-          <Text
-            style={[
-              styles.text,
-              {
-                fontWeight: '500',
-                flex: 0.6,
-                textAlign: 'left',
-                paddingLeft: hp('2%'),
-                fontStyle: 'italic',
-                letterSpacing: wp('0.1%'),
-                lineHeight: hp('3%'),
-              },
-            ]}>
-            {`"${item.quote}"`}
-          </Text>
-        </View>
-        {item.author && (
-          <Text
-            style={[
-              styles.text,
-              {fontWeight: '500', textAlign: 'right', marginRight: wp('1%')},
-            ]}>
-            {item.author}
-          </Text>
-        )}
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.button, {paddingHorizontal: 30}]}>
-          <Text style={styles.buttonText}>{item.button1}</Text>
-          <Icon
-            name="chevron-circle-right"
-            size={hp('2.5%')}
-            color={Colors.secondary}
-            style={{marginLeft: hp('1.5%')}}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>{item.button2}</Text>
-          <Icon
-            name="share-alt"
-            size={hp('2.5%')}
-            color={Colors.secondary}
-            style={{marginLeft: hp('1.5%')}}
-          />
-        </TouchableOpacity>
+        <Icon
+          name="pause-circle"
+          size={hp('9%')}
+          onPress={() => setWished(!wished)}
+          color={wished ? Colors.yellow : Colors.primary}
+          style={styles.centerImage}
+        />
       </View>
     </View>
   );
@@ -84,17 +49,16 @@ const renderItem = (item,wished,setWished) => {
 
 const RenderTips = ({item}) => {
   const [index, setIndex] = useState(0);
-  const [wished,setWished]=useState(false)
+  const [wished, setWished] = useState(false);
 
   const isCarousel = useRef(null);
   const data = item.sliderContent;
   return (
     <View style={styles.container}>
-      <Text style={styles.messageText}>{item.message}</Text>
       <Carousel
         ref={isCarousel}
         data={data}
-        renderItem={({item})=>renderItem(item,wished,setWished)}
+        renderItem={({item}) => renderItem(item, wished, setWished)}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
         onSnapToItem={index => setIndex(index)}
@@ -104,8 +68,8 @@ const RenderTips = ({item}) => {
         activeDotIndex={index}
         carouselRef={isCarousel}
         dotStyle={{
-          width: wp('8.0%'),
-          height: hp('1.5%'),
+          width: wp('4%'),
+          height: hp('2%'),
           borderRadius: hp('1.5%'),
           marginHorizontal: hp('0.1%'),
           backgroundColor: Colors.primary,
@@ -145,7 +109,13 @@ const styles = StyleSheet.create({
     // flex:1,
     // display: 'flex',
   },
-  image: {width: wp('100%'), height: hp('26%'),opacity:0.8},
+  image: {
+    width: wp('100%'),
+    height: hp('80%'),
+    opacity: 0.9,
+    borderRadius: hp('5%'),
+    overflow: 'hidden',
+  },
   quoteImage: {
     flex: 0.4,
     display: 'flex',
@@ -195,11 +165,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  wishListImage:{
+  wishListImage: {
     position: 'absolute',
-    zIndex:5,
-    top:hp('2%'),
-    right:wp('3.5%')
-  }
+    zIndex: 5,
+    top: hp('2%'),
+    right: wp('3.5%'),
+  },
+  centerImage: {
+    position: 'absolute',
+    zIndex: 5,
+    top: hp('35%'),
+    right: wp('40%'),
+  },
 });
 export {RenderTips};
