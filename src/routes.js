@@ -111,7 +111,8 @@ const TabNavigator = () => {
               style={{
                 height: hp('10%'),
                 backgroundColor: Colors.primary,
-                borderTopLeftRadius: hp('5%'),
+                borderTopLeftRadius: hp('2%'),
+                borderTopRightRadius: hp('2%'),
                 paddingTop:hp('20%'),
                 width: wp('100%'),
                 borderWidth: 0,

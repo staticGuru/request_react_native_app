@@ -32,10 +32,11 @@ const styles = StyleSheet.create({
   },
   AppBarContainer1: {
     flex: 1,
-    borderBottomRightRadius: hp('6%'),
+    borderBottomRightRadius: hp('2%'),
     backgroundColor: Colors.primary,
     justifyContent: 'center',
-    // alignItems:'center'
+    borderBottomLeftRadius: hp('2%'),
+
   },
   LogoContainer: {
     flex: 0.2,
@@ -49,8 +50,7 @@ const styles = StyleSheet.create({
   },
   childrenContainer1: {
     flex: 1,
-    borderTopLeftRadius: hp('6%'),
-    borderBottomRightRadius: hp('6%'),
+    
     backgroundColor: Colors.secondary,
     overflow: 'hidden',
   },
