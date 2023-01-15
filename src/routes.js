@@ -163,21 +163,21 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <Icon
-              name="plus-circle"
-              size={hp('4%')}
-              color={focused ? Colors.yellow : Colors.primary}
+              name="play-circle"
+              size={hp('6%')}
+              color={!focused ? Colors.yellow : Colors.primary}
             />
           ),
           tabBarIconStyle: {
             borderColor: Colors.secondary,
             // borderWidth: 20,
             // padding:10,
-            width: hp('6%'),
+            width: hp('7%'),
             borderBottomLeftRadius:hp('7%'),
             borderBottomRightRadius:hp('7%'),
-            height: hp('6%'),
+            height: hp('7.5%'),
             position: 'absolute',
-            bottom: hp('1.5%'),
+            bottom: hp('2.5%'),
             backgroundColor: Colors.secondary,
             zIndex:100
           },
