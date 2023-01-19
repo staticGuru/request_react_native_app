@@ -44,13 +44,13 @@ const FirstScreenNavigator = () => {
     </Stack.Navigator>
   );
 };
-const TrendingScreenNavigator=()=>{
-  return(
+const TrendingScreenNavigator = () => {
+  return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Trending" component={Trending} />
-  </Stack.Navigator>
-  )
-}
+      <Stack.Screen name="Trending" component={Trending} />
+    </Stack.Navigator>
+  );
+};
 const CommunityScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -115,7 +115,7 @@ const TabNavigator = () => {
                 backgroundColor: Colors.primary,
                 borderTopLeftRadius: hp('2%'),
                 borderTopRightRadius: hp('2%'),
-                paddingTop:hp('20%'),
+                paddingTop: hp('20%'),
                 width: wp('100%'),
                 borderWidth: 0,
               }}
@@ -176,12 +176,12 @@ const TabNavigator = () => {
             // padding:10,
             width: hp('7%'),
             // borderBottomLeftRadius:hp('7%'),
-            borderRadius:hp('7%'),
+            borderRadius: hp('7%'),
             height: hp('7.5%'),
             position: 'absolute',
             bottom: hp('2.5%'),
             backgroundColor: Colors.secondary,
-            zIndex:100
+            zIndex: 100,
           },
         }}
         component={FirstScreenNavigator} // Replaced Screen 1

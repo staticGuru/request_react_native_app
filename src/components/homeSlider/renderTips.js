@@ -24,7 +24,7 @@ const renderItem = (item, wished, setWished) => {
     <View key={item.id} style={styles.itemContainer}>
       <View style={styles.imageContainer}>
         <Image
-          source={{uri: item.image}}
+          source={item.image}
           style={styles.image}
           resizeMode="cover"
         />

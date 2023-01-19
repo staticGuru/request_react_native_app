@@ -12,6 +12,7 @@ import RenderTrending from './renderTrending';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {data} from './data';
 import RenderCenter from './renderCenter';
+import RenderDailyDose from './RenderDailyDose';
 export const SLIDER_HEIGHT = Dimensions.get('screen').height * 0.8;
 export const ITEM_HEIGHT = SLIDER_HEIGHT;
 
@@ -21,6 +22,7 @@ const renderItem = ({item}) => {
   return (
     <View style={styles.itemContainer}>
       {item.type == 'greetings' && <RenderGreetings item={item.content} />}
+      {item.type == 'dose' && <RenderDailyDose item={item.content} />}
       {item.type == 'tips' && <RenderTips item={item.content} />}
       {item.type == 'library' && <RenderLibrary item={item.content} />}
       {item.type == 'trending' && <RenderTrending item={item.content} />}
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     display: 'flex',
-    height: hp('100%'),
+    // height: hp('100%'),
     padding: wp('4%'),
     borderRadius: hp('2%'),
     flex: 1,

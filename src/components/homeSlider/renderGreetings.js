@@ -10,30 +10,9 @@ const RenderGreetings = ({item}) => {
     <View style={styles.itemContainer}>
       <Text style={styles.greetText}>{item.message}</Text>
       <View style={styles.cardContainer}>
-        <Image source={{uri: item.image}} style={styles.image} />
+        <Image source={item.image} style={styles.image} />
 
-      {/*  <Text style={styles.description}>{`"${item.quote}"`}</Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={[styles.button, {paddingHorizontal: wp('3%')}]}>
-            <Text style={styles.buttonText}>{item.button1}</Text>
-            <Icon
-              name="chevron-circle-right"
-              size={hp('2.5%')}
-              color={Colors.secondary}
-              style={{marginLeft: wp('6%')}}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>{item.button2}</Text>
-            <Icon
-              name="share-alt"
-              size={hp('2.5%')}
-              color={Colors.secondary}
-              style={{marginLeft: wp('3%')}}
-            />
-          </TouchableOpacity>
-  </View>*/}
-  <View style={{height:hp('5%')}}/>
+  <View style={{height:hp('1%')}}/>
       </View>
     </View>
   );
@@ -61,7 +40,7 @@ const styles = StyleSheet.create({
     width: wp('90%'),
     flex: 1,
     borderRadius: wp('5%'),
-   height: hp('80%')
+  //  height: hp('80%')
   },
   description: {
     paddingHorizontal: wp('1%'),

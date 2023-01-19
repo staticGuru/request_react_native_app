@@ -22,7 +22,7 @@ import {
        <View style={styles.item}>
          <View style={styles.innerItem}>
          <Pressable onPress={()=>console.log("id",item.name)}>
-         <Image source={{uri: item.image}} style={styles.image} resizeMode="stretch"/>
+         <Image source={{uri: item.image}} style={styles.image} resizeMode="contain"/>
          </Pressable>
      <Text style={styles.name}>{item.name}</Text>
          </View>
@@ -82,9 +82,10 @@ import {
        width: WIDTH,
      },
      innerItem: {
-       //     backgroundColor: 'red',
-       justifyContent: 'center',
+       backgroundColor: Colors.primary,
+       display:'flex',
        alignItems: 'center',
+       flexDirection: 'row',
        borderRadius: hp('2%'),
        overflow: 'hidden',
      },
