@@ -1,3 +1,5 @@
+
+
 // Modal.js
 import React from 'react';
 import {
@@ -28,9 +30,6 @@ class CustomModal extends React.Component {
     return (
       <View>
         <Modal
-      
-        // transparent={true}
-        
           visible={props.visible}
           transparent={props.transparent}
           onRequestClose={props.dismiss}

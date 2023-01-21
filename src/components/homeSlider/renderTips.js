@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: hp('2.0%'),
     flex: 1,
     // justifyContent: 'space-between',
+    overflow: 'hidden',
     backgroundColor: 'transparent',
   },
   quoteContainer: {
@@ -110,10 +111,10 @@ const styles = StyleSheet.create({
     // display: 'flex',
   },
   image: {
-    width: wp('100%'),
+    width: wp('90%'),
     height: hp('80%'),
     opacity: 0.9,
-    borderRadius: hp('5%'),
+    borderRadius: hp('1%'),
     overflow: 'hidden',
   },
   quoteImage: {

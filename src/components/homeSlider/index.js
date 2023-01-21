@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, {useState, useRef} from 'react';
-import { View, Dimensions, StyleSheet} from 'react-native';
+import {View, Dimensions, StyleSheet} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import RenderFeaturedProgram from './renderFeaturedProgram';
 import {RenderGreetings} from './renderGreetings';
@@ -9,14 +9,15 @@ import RenderLibrary from './renderLibrary';
 import RenderProgram from './renderProgram';
 import {RenderTips} from './renderTips';
 import RenderTrending from './renderTrending';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import {data} from './data';
 import RenderCenter from './renderCenter';
 import RenderDailyDose from './RenderDailyDose';
 export const SLIDER_HEIGHT = Dimensions.get('screen').height * 0.8;
 export const ITEM_HEIGHT = SLIDER_HEIGHT;
-
-
 
 const renderItem = ({item}) => {
   return (
@@ -30,7 +31,6 @@ const renderItem = ({item}) => {
       {item.type == 'featured' && <RenderFeaturedProgram item={item.content} />}
       {item.type == 'highlights' && <RenderHighlights item={item.content} />}
       {item.type == 'wellness' && <RenderCenter item={item.content} />}
-
     </View>
   );
 };

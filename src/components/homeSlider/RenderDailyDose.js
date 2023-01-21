@@ -16,10 +16,10 @@ import Colors from '../../util/Colors';
 const RenderDailyDose = ({item}) => {
   return (
     <View key={item.id} style={styles.itemContainer}>
-      <Text style={styles.titleText}>{item.message}</Text>
+      <Text style={styles.titleText}>{item?.message}</Text>
       <View style={styles.container}>
-        <Image source={item.image} style={styles.image} resizeMode="contain" />
-      <Text style={styles.text}>{item.quote}</Text>
+        <Image source={item?.image} style={styles.image} resizeMode="contain" />
+        <Text style={styles?.text}>{item?.quote}</Text>
       </View>
     </View>
   );
@@ -28,13 +28,13 @@ const RenderDailyDose = ({item}) => {
 export default RenderDailyDose;
 
 const styles = StyleSheet.create({
-     titleText:{
-          marginVertical: hp('1%'),
+  titleText: {
+    marginVertical: hp('1%'),
     fontSize: hp('2.5%'),
     fontWeight: 'bold',
     color: Colors.primary,
     textAlign: 'left',
-     },
+  },
   image: {
     width: wp('86%'),
     height: hp('40%'),
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   itemContainer: {
-     display: 'flex',
-     height: '100%',
-     paddingTop: hp('1.0%'),
-     borderRadius: hp('2.0%'),
-     flex: 1,
-     // justifyContent: 'space-between',
-     backgroundColor: 'transparent',
-   },
+    display: 'flex',
+    height: '100%',
+    paddingTop: hp('1.0%'),
+    borderRadius: hp('2.0%'),
+    flex: 1,
+    // justifyContent: 'space-between',
+    backgroundColor: 'transparent',
+  },
   imageContainer: {
     flex: 0.5,
     display: 'flex',
@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: Colors.primary,
     textAlign: 'left',
-    lineHeight:'1.2'
+    lineHeight: 24,
   },
-  container:{
-     backgroundColor:"#FFFFFF",
-     padding:hp('1%')
-  }
+  container: {
+    backgroundColor: '#FFFFFF',
+    padding: hp('1%'),
+  },
 });
