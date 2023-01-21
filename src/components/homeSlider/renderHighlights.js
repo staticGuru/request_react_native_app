@@ -18,50 +18,19 @@ export const WIDTH = Dimensions.get('screen').width - wp('8%');
 export const ITEM_WIDTH = WIDTH;
 
 const renderItem = ({item}) => {
+  console.log(item,"fsdfsd")
   return (
-    <View style={styles.item}>
-      <View style={styles.innerItem}>
-        <Image source={{uri: item.image}} style={styles.image} resizeMode="cover" />
-        <Text style={styles.titleText}>{item.title}</Text>
-        <View style={styles.viewContent}>
-          <View style={styles.members}>
-            <Icon
-              name="users"
-              size={hp('2%')}
-              color={Colors.primary}
-            />
-            <Text style={styles.memberText}>{item.author}</Text>
-          </View>
-          <View style={styles.members}>
-            <Icon
-              name="users"
-              size={hp('2%')}
-              color={Colors.primary}
-              // style={{marginLeft: 5, alignSelf: 'center'}}
-            />
-            <Text style={styles.memberText}>{item.menu}</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            marginVertical: hp('.5%'),
-            marginHorizontal: hp('1%'),
-          }}>
-         <Text numberOfLines={3} style={{textAlign:'left',fontSize:hp('1.8%')}}>{item.description}</Text>
-        </View>
-      </View>
-    </View>
+    <View key={item.id} style={styles.itemContainer}>
+   <View style={styles.container}>
+      <Image source={item?.image} style={styles.image} resizeMode="contain" />
+      <Text style={styles.titleText}>{item?.message}</Text>
+      <Text style={styles?.text}>{item?.quote}</Text>
+  </View>
+  </View>
   );
 };
 const renderCarouselItem = ({item}) => {
-  return (
-    <FlatList
-      data={item.data}
-      numColumns={1}
-      style={[styles.list]}
-      renderItem={renderItem}
-    />
-  );
+  renderItem({item:item.content});
 };
 const RenderHighlights = ({item}) => {
   const [index, setIndex] = useState(0);
@@ -85,7 +54,7 @@ const RenderHighlights = ({item}) => {
         <Carousel
           ref={isCarousel}
           data={data}
-          renderItem={renderCarouselItem}
+          renderItem={(item)=>renderItem({item:item.item.content})}
           sliderWidth={WIDTH}
           itemWidth={ITEM_WIDTH}
           onSnapToItem={index => setIndex(index)}
@@ -95,7 +64,7 @@ const RenderHighlights = ({item}) => {
           activeDotIndex={index}
           carouselRef={isCarousel}
           dotStyle={{
-            width: hp('4%'),
+            width: hp('1.5%'),
             height: hp('1.5%'),
             borderRadius: hp('1.5%'),
             marginHorizontal: hp('.1%'),
@@ -133,6 +102,9 @@ const styles = StyleSheet.create({
      display: 'flex',
      flexDirection: 'row',
      justifyContent:'space-between'
+  },
+  listContainer:{
+    height: hp('72%'),
   },
   members: {
     flexDirection: 'row',
@@ -209,5 +181,47 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: hp('2.2%'),
     color: Colors.primary,
+  },
+  titleText: {
+    marginVertical: hp('0.1%'),
+    fontSize: hp('2.5%'),
+    fontWeight: 'bold',
+    color: Colors.primary,
+    textAlign: 'left',
+  },
+  image: {
+    width: wp('86%'),
+    height: hp('40%'),
+    opacity: 0.9,
+    overflow: 'hidden',
+  },
+  itemContainer: {
+    display: 'flex',
+    height: hp('100%'),
+    paddingTop: hp('1.0%'),
+    borderRadius: hp('2.0%'),
+    flex: 1,
+  },
+  imageContainer: {
+    flex: 0.5,
+    display: 'flex',
+    paddingTop: hp('0.1%'),
+    resizeMode: 'cover',
+  },
+  textContainer: {
+    flex: 0.5,
+  },
+  text: {
+    marginVertical: hp('1%'),
+    fontSize: hp('2%'),
+    fontWeight: 'normal',
+    color: Colors.primary,
+    textAlign: 'left',
+    lineHeight: 24,
+    textAlign:"justify"
+  },
+  container: {
+    backgroundColor: '#FFFFFF',
+    padding: hp('1%'),
   },
 });

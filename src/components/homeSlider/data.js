@@ -5,7 +5,14 @@ import Tip2 from "../../assets/images/tip2.png";
 import Tip3 from "../../assets/images/tip3.png";
 import Problemsol1 from "../../assets/images/wellnessCenter/problemsol1.png";
 import Problemsol2 from "../../assets/images/wellnessCenter/problemsol12.png";
-
+import Meditation1 from "../../assets/images/wellnessCenter/meditation1.png";
+import Meditation2 from "../../assets/images/wellnessCenter/meditation2.png";
+import Transformstory from "../../assets/images/wellnessCenter/transformstory.jpg";
+import Tricks1 from "../../assets/images/wellnessCenter/trick1.png";
+import Tricks2 from "../../assets/images/wellnessCenter/trick2.png";
+import Well1 from "../../assets/images/wellnessCenter/center1.png";
+import Well2 from "../../assets/images/wellnessCenter/center2.png";
+import Well3 from "../../assets/images/wellnessCenter/center3.png";
 
 const data = [
     {
@@ -87,18 +94,15 @@ const data = [
                     slides: [
                         {
                             name: "Happiness",
-                            image:
-                "https://img.freepik.com/premium-vector/smiling-face-emoji_1319-431.jpg?w=2000",
+                            image: Well1,
                         },
                         {
                             name: "Career",
-                            image:
-                "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
+                            image: Well2,
                         },
                         {
                             name: "Nature",
-                            image:
-                "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+                            image: Well3,
                         },
                     ],
                 },
@@ -235,10 +239,36 @@ const data = [
                         {
                             id: 1,
                             image: Problemsol1,
+                            name: "Find job in you",
                         },
                         {
                             id: 2,
-                            image:Problemsol2
+                            image: Problemsol2,
+                            name: "Practive Gratitude",
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+    {
+        id: 511,
+        type: "trending",
+        content: {
+            message: "Tips and Tricks",
+            slides: [
+                {
+                    id: 1,
+                    data: [
+                        {
+                            id: 1,
+                            image: Tricks1,
+                            name: "Excude Confidence",
+                        },
+                        {
+                            id: 2,
+                            image: Tricks2,
+                            name: "Positivity",
                         },
                     ],
                 },
@@ -249,47 +279,20 @@ const data = [
         id: 5,
         type: "featured",
         content: {
-            message: "Featured Programs",
+            message: "Guided Meditation",
             slides: [
                 {
                     id: 1,
                     data: [
                         {
                             id: 1,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Intelligence Quotient",
-                            members: "213,000",
-                            button: "open",
+                            image: Meditation1,
+                            name: "Excude Confidence",
                         },
                         {
                             id: 2,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Success at work",
-                            members: "126,265",
-                            button: "open",
-                        },
-                    ],
-                },
-                {
-                    id: 2,
-                    data: [
-                        {
-                            id: 1,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Intelligence Quotient",
-                            members: "213,000",
-                            button: "open",
-                        },
-                        {
-                            id: 2,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Success at work",
-                            members: "126,265",
-                            button: "open",
+                            image: Meditation2,
+                            name: "Positivity",
                         },
                     ],
                 },
@@ -300,57 +303,25 @@ const data = [
         id: 6,
         type: "highlights",
         content: {
-            message: "Transformation Hightlights",
+            message: "Transformation Stories",
             slides: [
                 {
                     id: 1,
-                    data: [
-                        {
-                            id: 1,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Transformation title",
-                            author: "Kendell Jenner",
-                            menu: "Build Confidence",
-                            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-                        },
-                        {
-                            id: 2,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Transformation title",
-                            author: "Kendell Jenner",
-                            menu: "Build Confidence",
-                            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-                        },
-                    ],
+                    content: {
+                        message: "Transformation Story Title",
+                        image: Transformstory,
+                        quote:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat Smile in the mirror. Do that every morning and you'll start to see a big difference in your lifeSmile in the mirror.",
+                    },
                 },
                 {
                     id: 2,
-                    data: [
-                        {
-                            id: 1,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Transformation title",
-                            author: "Kendell Jenner",
-                            menu: "Build Confidence",
-                            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-                        },
-                        {
-                            id: 2,
-                            image:
-                "https://images.unsplash.com/photo-1468174829941-1d60ae85c487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                            title: "Transformation title",
-                            author: "Kendell Jenner",
-                            menu: "Build Confidence",
-                            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-                        },
-                    ],
+                    content: {
+                        message: "Transformation Story Title",
+                        image: Transformstory,
+                        quote:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat Smile in the mirror. Do that every morning and you'll start to see a big difference in your lifeSmile in the mirror.",
+                    },
                 },
             ],
         },

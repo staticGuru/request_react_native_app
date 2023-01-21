@@ -5,22 +5,22 @@ import {Image} from 'react-native-svg';
 const WellnessDetails = id => {
   return (
     <View>
-     {/* <View>
+    {/* <View>
         <Text>arrow</Text>
         <Text>Mind</Text>
+    </View>
+      <View style={styles.item} onClick={()=>console.log(index)}>
+      <View
+        style={[
+          styles.innerItem,
+          {flexDirection: (index + 1) % 2 != 0 ? 'row' : 'row-reverse'},
+          
+        ]}>
+        <Image source={item.image} style={styles.image} resizeMode="cover" />
+
+        <Text style={styles.name}>{item.name}</Text>
       </View>
-      <View style={styles.item}>
-        <View style={styles.innerItem}>
-          <Pressable onPress={() => console.log('id', item.name)}>
-            <Image
-              source={{uri: item.image}}
-              style={styles.image}
-              resizeMode="contain"
-            />
-          </Pressable>
-          <Text style={styles.name}>{item.name}</Text>
-        </View>
-      </View>
+    </View>
       <View>
       <Image source={item.image} style={styles.image} resizeMode="contain" />
       <Text>
@@ -29,8 +29,8 @@ const WellnessDetails = id => {
         soul.”
       </Text>
       <Text>― Matshona Dhliwayo</Text>
-      </View>
-  <View>Tricks</View>*/}
+      </View>*/}
+  <View>Tricks</View>
     </View>
   );
 };
