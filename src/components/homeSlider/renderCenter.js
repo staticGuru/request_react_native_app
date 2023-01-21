@@ -22,7 +22,7 @@ import {
        <View style={styles.item}>
          <View style={styles.innerItem}>
          <Pressable onPress={()=>console.log("id",item.name)}>
-         <Image source={{uri: item.image}} style={styles.image} resizeMode="contain"/>
+         <Image source={item.image} style={styles.image} resizeMode="contain"/>
          </Pressable>
      <Text style={styles.name}>{item.name}</Text>
          </View>

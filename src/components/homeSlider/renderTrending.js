@@ -24,11 +24,12 @@ const renderItem = ({item}) => {
     <View style={styles.item}>
       <View style={styles.innerItem}>
         <Image
-          source={{uri: item.image}}
+          source={item.image}
           style={styles.image}
           resizeMode="cover"
         />
       </View>
+      <Text style={styles.text}>Find job in you</Text>
     </View>
   );
 };
@@ -61,38 +62,7 @@ const RenderTrending = ({item}) => {
         </View>
       </View>
       <View style={styles.listContainer}>
-        <Carousel
-          ref={isCarousel}
-          data={data}
-          // style={{display: 'flex', flexDirection: 'row'}}
-          renderItem={renderCarouselItem}
-          sliderWidth={WIDTH}
-          itemWidth={ITEM_WIDTH}
-          onSnapToItem={index => setIndex(index)}
-        />
-        <Pagination
-          dotsLength={data.length}
-          activeDotIndex={index}
-          carouselRef={isCarousel}
-          dotStyle={{
-            width: hp('4%'),
-            height: hp('1.5%'),
-            borderRadius: hp('1.5%'),
-            marginHorizontal: hp('.1%'),
-            backgroundColor: Colors.primary,
-          }}
-          tappableDots={true}
-          inactiveDotStyle={{
-            backgroundColor: 'grey',
-            width: hp('2%'),
-            height: hp('2%'),
-            borderRadius: hp('1%'),
-            marginHorizontal: 0,
-            // Define styles for inactive dots here
-          }}
-          inactiveDotOpacity={0.7}
-          inactiveDotScale={0.7}
-        />
+      {renderCarouselItem({item:data[0]})}
       </View>
     </View>
   );
@@ -109,7 +79,12 @@ const styles = StyleSheet.create({
     paddingLeft: hp('2%'),
     paddingVertical: hp('.1%'),
   },
-
+text:{
+  fontWeight: 'bold',
+  fontSize: hp('2%'),
+  color:Colors.primary,
+  margin:hp('1.5%')
+},
   list: {
     // flex:1,
     flexDirection: 'row',
@@ -117,10 +92,14 @@ const styles = StyleSheet.create({
     width: wp('100%'),
   },
   item: {
-    //     backgroundColor: 'blue',
+    backgroundColor:"white",
     paddingVertical: hp('1%'),
     paddingHorizontal: wp('2%'),
     width: WIDTH,
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom:hp('1%'),
+    borderRadius:hp('1.3%')
   },
   innerItem: {
     //     backgroundColor: 'red',
@@ -143,7 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: hp('2%'),
-    paddingVertical: hp('2%'),
+    paddingVertical: hp('1%'),
   },
   heading: {
     fontSize: hp('2.4%'),
