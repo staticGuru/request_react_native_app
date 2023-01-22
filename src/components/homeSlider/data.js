@@ -15,6 +15,7 @@ import Well2 from "../../assets/images/wellnessCenter/center2.png";
 import Well3 from "../../assets/images/wellnessCenter/center3.png";
 
 const data = [
+   
     {
         id: 1,
         type: "greetings",
@@ -37,6 +38,7 @@ const data = [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat Smile in the mirror. Do that every morning and you'll start to see a big difference in your lifeSmile in the mirror.",
         },
     },
+    
     {
         id: 2,
         type: "tips",

@@ -16,6 +16,7 @@ import {
 import {data} from './data';
 import RenderCenter from './renderCenter';
 import RenderDailyDose from './RenderDailyDose';
+import WellnessDetails from './wellnessDetails';
 export const SLIDER_HEIGHT = Dimensions.get('screen').height * 0.8;
 export const ITEM_HEIGHT = SLIDER_HEIGHT;
 
@@ -30,7 +31,8 @@ const renderItem = ({item}) => {
       {item.type == 'program' && <RenderProgram item={item.content} />}
       {item.type == 'featured' && <RenderFeaturedProgram item={item.content} />}
       {item.type == 'highlights' && <RenderHighlights item={item.content} />}
-      {item.type == 'wellness' && <RenderCenter item={item.content} />}
+      {item.type == 'wellness' &&<RenderCenter item={item.content} />}
+      {/*<WellnessDetails/>*/}
     </View>
   );
 };

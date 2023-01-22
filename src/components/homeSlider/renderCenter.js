@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Pressable,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
@@ -31,7 +32,7 @@ const renderItem = ({item, index}) => {
   // const navigation=useNavigation()
   // navigation.navigate("WellnessDetails",{item,index})
   return (
-    <View style={styles.item} onClick={()=>navigation.navigate("WellnessDetails",{item,index})}>
+    <TouchableOpacity style={styles.item} onPress={()=>navigation.navigate("WellnessDetails")}>
       <View
         style={[
           styles.innerItem,
@@ -42,7 +43,7 @@ const renderItem = ({item, index}) => {
 
         <Text style={styles.name}>{item.name}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -61,7 +62,7 @@ const renderItem = ({item, index}) => {
       <View style={styles.headContainer}>
         <Text style={styles.heading}>{item.message}</Text>
         <View style={{flexDirection: 'row'}}>
-          <Text style={styles.seeAll}>See All</Text>
+          <Text style={styles.seeAll} onPress={()=>console.log("called")}>See All</Text>
           <Icon
             name="chevron-right"
             size={hp('2%')}
@@ -130,7 +131,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   name: {
-    zIndex: 10,
     position: 'absolute',
     top: hp('9%'),
     alignSelf: 'center',
