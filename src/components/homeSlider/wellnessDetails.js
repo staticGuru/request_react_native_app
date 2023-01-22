@@ -46,7 +46,7 @@ const detailsTricks = [
     title: 'Practice Gratitude',
   },
 ];
-const WellnessDetails = ({navigation}) => {
+const WellnessDetails = ({onPress}) => {
   var index = 1;
   var item = {
     image: Well1,
@@ -55,7 +55,7 @@ const WellnessDetails = ({navigation}) => {
   return (
     <View style={{padding: hp('1%')}}>
       <View style={{display: 'flex', flexDirection: 'row'}}>
-        <TouchableOpacity onPress={() => navigation.pop()}>
+        <TouchableOpacity onPress={onPress}>
           <Icon
             name="arrow-left"
             size={hp('2%')}
@@ -75,10 +75,10 @@ const WellnessDetails = ({navigation}) => {
           ]}>
           <Image source={item.image} style={styles.image} resizeMode="cover" />
 
-          <Text style={styles.name}>{item.name}</Text>
+          <Text style={[styles.name,{left:hp('3%')}]}>{item.name}</Text>
         </View>
       </TouchableOpacity>
-      <ScrollView style={{flexGrow:1,display:"flex"}}>
+      <ScrollView  contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.firstContainer}>
         <Image
             source={Detailsmin}
@@ -150,6 +150,7 @@ const WellnessDetails = ({navigation}) => {
             </View>
           </View>
         </View>
+        <View style={{height:hp('20%')}}/>
       </ScrollView>
     </View>
   );
@@ -204,6 +205,7 @@ const styles = StyleSheet.create({
   },
   firstContainer: {
     display: 'flex',
+    flex:1,
     flexDirection: 'column',
     overflow: 'scroll',
   },

@@ -39,9 +39,7 @@ export const AuthContext = React.createContext();
 const FirstScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="WellnessDetails" component={WellnessDetails} />
-
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 };
