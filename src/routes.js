@@ -249,30 +249,41 @@ const Routes = () => {
             isSignout: true,
             userToken: null,
           };
+        case 'UNVERIFIED_SIGN_IN':
+          return {
+            ...prevState,
+            unVerifiedUser:action.data
+          }
       }
     },
     {
       isLoading: true,
       isSignout: false,
       userToken: null,
+      unVerifiedUser:null
     },
   );
   const authContext = React.useMemo(
     () => ({
       signIn: async data => {
-        dispatch({type: 'SIGN_IN', token: 'dummy-auth-token'});
+        dispatch({type: 'SIGN_IN', token: data.token});
       },
       signOut: () => dispatch({type: 'SIGN_OUT'}),
       signUp: async data => {
         dispatch({type: 'SIGN_IN', token: 'dummy-auth-token'});
       },
+      unVerifiedUser:async data=>{
+        dispatch({type: 'UNVERIFIED_SIGN_IN', data});
+
+      },
+      state:state
     }),
-    [],
+    [state],
   );
 
   return (
     <AuthContext.Provider value={authContext}>
-      {state.userToken != null ? <AuthScreens /> : <DrawerNavigator />}
+      {state.userToken == null ? <AuthScreens /> : <DrawerNavigator />}
     </AuthContext.Provider>
   );
 };

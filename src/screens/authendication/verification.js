@@ -5,8 +5,12 @@ import OTPTextView from 'react-native-otp-textinput';
 import AuthImage from '../../components/authHeader/authImage';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../util/Colors';
+import { AuthContext } from '../../routes';
 
 const Verification = () => {
+  const {state} = React.useContext(AuthContext);
+  console.log("statevaluuuuu",state)
+
   return (
      <AuthLayout>
     <View style={styles.Container}>

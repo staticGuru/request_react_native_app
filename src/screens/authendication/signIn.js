@@ -1,10 +1,4 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import AuthLayout from './authLayout';
 import AuthInput from './authInput';
@@ -12,20 +6,52 @@ import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../components/button';
 import {AuthContext} from '../../routes';
 import Colors from '../../util/Colors';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Toast from 'react-native-toast-message';
+import {signInApi} from '../service';
+import axios, {Axios} from 'axios';
+// import axios from 'axios';
 
 const SignIn = () => {
   const navigation = useNavigation();
   const [personalEmail, setPersonalEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {signIn} = React.useContext(AuthContext);
+  const {unVerifiedUser} = React.useContext(AuthContext);
+  async function submitSignInForm() {
+    let userData = {email: personalEmail, password};
+    try {
+      //       {email: 'hulu@gmail.com', password: 'Hulu@123'},
+
+      await signInApi(userData).then(res => {
+        Toast.show({
+          type: 'info',
+          text1: 'This is an info message',
+        });
+        unVerifiedUser(res.result)
+        console.log('signInResponse', res);
+        navigation.navigate('Verification');
+      }).catch(err=>console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <AuthLayout>
-      <View style={styles.Container}> 
+      <View style={styles.Container}>
         <ScrollView>
-        <View style={styles.logoContainer}>
-        <Image source={{uri:"https://www.pngfind.com/pngs/m/13-131403_flying-bird-clipart-bird-png-flying-birds-png.png"}} alt="logo" resizeMode="stretch"  style={styles.logo} />
-      </View>
+          <View style={styles.logoContainer}>
+            <Image
+              source={{
+                uri: 'https://www.pngfind.com/pngs/m/13-131403_flying-bird-clipart-bird-png-flying-birds-png.png',
+              }}
+              alt="logo"
+              resizeMode="stretch"
+              style={styles.logo}
+            />
+          </View>
 
           <Text style={styles.titleText}>Welcome back ! Lets sign you in</Text>
           <View style={styles.InputCont}>
@@ -53,8 +79,7 @@ const SignIn = () => {
         </ScrollView>
       </View>
       <View style={styles.footerContainer}>
-     
-        <CustomButton onPress={() => signIn("eapp", "eappp")} text="Sign In" />
+        <CustomButton onPress={() => submitSignInForm()} text="Sign In" />
 
         <View style={styles.footerView}>
           <Text style={[styles.description, {fontSize: hp('2%')}]}>
@@ -95,23 +120,24 @@ const styles = StyleSheet.create({
   logoContainer: {
     padding: hp('1%'),
     alignSelf: 'center',
-    flex:0.6,
+    flex: 0.6,
     display: 'flex',
-    paddingTop:hp('1%'),
-    resizeMode:'cover',
+    paddingTop: hp('1%'),
+    resizeMode: 'cover',
   },
   InputCont: {
     paddingVertical: 90,
   },
   logo: {
-    width: wp('40%'), height: hp('10%'),
+    width: wp('40%'),
+    height: hp('10%'),
     alignSelf: 'center',
   },
   titleText: {
     textAlign: 'center',
     fontSize: hp('2.2%'),
     fontWeight: 'bold',
-    color:Colors.primary,
+    color: Colors.primary,
   },
   InputContainer: {
     alignSelf: 'center',

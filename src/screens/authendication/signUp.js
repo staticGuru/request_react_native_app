@@ -5,6 +5,7 @@ import AuthInput from './authInput';
 import { useNavigation } from '@react-navigation/native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../util/Colors';
+import { signUpApi } from '../service';
 
 const SignUp = () => {
      const navigation=useNavigation();
@@ -13,6 +14,19 @@ const SignUp = () => {
   const [corporateEmail,setCorporateEmail] = useState('');
   const [personalEmail,setPersonalEmail] = useState('');
   const [password,setPassword] = useState('');
+
+  async function submitSignUpForm(){
+    let userData={email:corporateEmail,password:password,userName:firstName+lastName,companyName:"dummy",role:"user",isAgree:true}
+    try{
+     const signUpResponse= await signUpApi(userData);
+     navigation.navigate('SignIn');
+    
+    }catch(err){
+      console.log(error);
+    }
+    
+  }
+
 
   return (<AuthLayout>
       <View style={styles.Container}>
@@ -61,7 +75,7 @@ const SignUp = () => {
       </View>
       <View style={styles.footerContainer}>
           <View style={styles.signupContainer}>
-          <TouchableOpacity style={styles.buttonContainer} onPress={() =>navigation.navigate('Verification')}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={() =>submitSignUpForm()}>
             <Text style={styles.signUpText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
