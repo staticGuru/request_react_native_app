@@ -11,8 +11,9 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Toast from 'react-native-toast-message';
-import {signInApi} from '../service';
+import {getVerificationPin, signInApi} from '../service';
 import axios, {Axios} from 'axios';
+import GenerateOTP from '../../util/generateOtp';
 // import axios from 'axios';
 
 const SignIn = () => {
@@ -23,16 +24,16 @@ const SignIn = () => {
   async function submitSignInForm() {
     let userData = {email: personalEmail, password};
     try {
-      //       {email: 'hulu@gmail.com', password: 'Hulu@123'},
-
-      await signInApi(userData).then(res => {
+      await signInApi(userData).then(async res => {
         Toast.show({
           type: 'info',
           text1: 'This is an info message',
         });
-        unVerifiedUser(res.result)
+        let pin=GenerateOTP()
+        unVerifiedUser({...res.result,verificationPin:pin})
+        await getVerificationPin({email:personalEmail,pin:pin});
         console.log('signInResponse', res);
-        navigation.navigate('Verification');
+        // navigation.navigate('Verification');
       }).catch(err=>console.log(err));
     } catch (err) {
       console.log(err);

@@ -1,6 +1,6 @@
 import axios, {Axios} from "axios";
 import config from "./config";
-import {Alert} from 'react-native';
+import {Alert} from "react-native";
 
 const BASE_API = config.BASE_API;
 //Authendications
@@ -23,7 +23,7 @@ async function signInApi(requestBody) {
     const requestUrl = `${BASE_API}/login`;
     console.log("signInApi", requestBody, requestUrl);
     try {
-       return await axios
+        return await axios
             .post(requestUrl, requestBody, {
                 headers: {
                     "Content-Type": "application/json",
@@ -31,8 +31,27 @@ async function signInApi(requestBody) {
             })
 
             .then(value => {
-                console.log("valueee",value);
-                if(value.status !==200) return Alert.alert("Something went wrong");
+                console.log("valueee", value);
+                if (value.status !== 200) return Alert.alert("Something went wrong");
+                return value.data;
+            })
+            .catch(err => Alert.alert(err.message));
+    } catch (error) {
+        return error.response;
+    }
+}
+async function getVerificationPin(requestBody) {
+    const requestUrl = `${BASE_API}/verificationpin`;
+    try {
+        return await axios
+            .post(requestUrl, requestBody, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+
+            .then(value => {
+                if (value.status !== 200) return Alert.alert("Something went wrong");
                 return value.data;
             })
             .catch(err => Alert.alert(err.message));
@@ -41,4 +60,4 @@ async function signInApi(requestBody) {
     }
 }
 
-export {signUpApi, signInApi};
+export {signUpApi, signInApi, getVerificationPin};
