@@ -10,7 +10,7 @@ const OnBoarding = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
         <View style={styles.topContainer1}>
-          <AuthHeader />
+          {/*<AuthHeader />*/}
           <View style={styles.appSliderContainer}>
             <AppSlider />
           </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   bottomContainer: {
     display: 'flex',
     flex: 0.3,
-    backgroundColor: '#002B5B',
+    backgroundColor: '#DFF6FF',
   },
   bottomContainer1: {
     display: 'flex',

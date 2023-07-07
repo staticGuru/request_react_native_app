@@ -24,17 +24,20 @@ const SignIn = () => {
   async function submitSignInForm() {
     let userData = {email: personalEmail, password};
     try {
-      await signInApi(userData).then(async res => {
-        Toast.show({
-          type: 'info',
-          text1: 'This is an info message',
-        });
-        let pin=GenerateOTP()
-        unVerifiedUser({...res.result,verificationPin:pin})
-        await getVerificationPin({email:personalEmail,pin:pin});
-        console.log('signInResponse', res);
-        // navigation.navigate('Verification');
-      }).catch(err=>console.log(err));
+    
+      await signInApi(userData)
+        .then(async res => {
+          Toast.show({
+            type: 'info',
+            text1: 'SignIN successfully!!!',
+          });
+          let pin = GenerateOTP();
+          unVerifiedUser({...res.result, verificationPin: pin});
+          await getVerificationPin({email: personalEmail, pin: pin.toString()});
+          console.log('signInResponse', res);
+          navigation.navigate('Verification');
+        })
+        .catch(err => console.log(err));
     } catch (err) {
       console.log(err);
     }

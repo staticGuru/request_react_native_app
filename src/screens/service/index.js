@@ -1,4 +1,4 @@
-import axios, {Axios} from "axios";
+import axios from "axios";
 import config from "./config";
 import {Alert} from "react-native";
 
@@ -6,14 +6,19 @@ const BASE_API = config.BASE_API;
 //Authendications
 async function signUpApi(requestBody) {
     const requestUrl = `${BASE_API}/signup`;
-    console.log("request", requestUrl);
+    console.log("request", requestUrl,requestBody);
     try {
-        const API_RESPONSE = await Axios.post(requestUrl, requestBody, {
+        return await axios.post(requestUrl, requestBody, {
             headers: {
                 "Content-Type": "application/json",
             },
-        });
-        return API_RESPONSE;
+        })
+            .then(value => {
+                console.log("valuefromapisections",value)
+                if (value.status !== 200) return Alert.alert("Something went wrong");
+                return value.data;
+            })
+            .catch(err => Alert.alert(err.message));
     } catch (error) {
         return error.response;
     }
@@ -31,7 +36,6 @@ async function signInApi(requestBody) {
             })
 
             .then(value => {
-                console.log("valueee", value);
                 if (value.status !== 200) return Alert.alert("Something went wrong");
                 return value.data;
             })
@@ -42,6 +46,7 @@ async function signInApi(requestBody) {
 }
 async function getVerificationPin(requestBody) {
     const requestUrl = `${BASE_API}/verificationpin`;
+    console.log("requestBody", requestBody);
     try {
         return await axios
             .post(requestUrl, requestBody, {
@@ -51,10 +56,12 @@ async function getVerificationPin(requestBody) {
             })
 
             .then(value => {
-                if (value.status !== 200) return Alert.alert("Something went wrong");
-                return value.data;
+                // if (value.status !== 200) return Alert.alert("Something went wrong");
+                // return value.data;
+                console.log(value);
+                return;
             })
-            .catch(err => Alert.alert(err.message));
+            .catch(err => console.log(err));
     } catch (error) {
         return error.response;
     }

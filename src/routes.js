@@ -122,7 +122,7 @@ const TabNavigator = () => {
           );
         },
         tabBarStyle: {
-          height: hp('6%'),
+          height: hp('10%'),
           border: 'none',
           backgroundColor: Colors.secondary,
           borderTopWidth: 0,
@@ -132,7 +132,9 @@ const TabNavigator = () => {
         inactiveTintColor: 'black',
         headerShown: false,
         tabBarShowLabel: false,
-      }}>
+      }}
+      initialRouteName='HomeTab'
+      >
       <Tab.Screen
         name="HomeTab"
         options={{
@@ -265,8 +267,9 @@ const Routes = () => {
   );
   const authContext = React.useMemo(
     () => ({
-      signIn: async data => {
-        dispatch({type: 'SIGN_IN', token: data.token});
+      signIn: async token => {
+        console.log("calleddddsfsdf",state)
+        dispatch({type: 'SIGN_IN', token:token});
       },
       signOut: () => dispatch({type: 'SIGN_OUT'}),
       signUp: async data => {
@@ -280,7 +283,7 @@ const Routes = () => {
     }),
     [state],
   );
-
+console.log("stattttt",state)
   return (
     <AuthContext.Provider value={authContext}>
       {state.userToken == null ? <AuthScreens /> : <DrawerNavigator />}

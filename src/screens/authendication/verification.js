@@ -1,16 +1,34 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthLayout from './authLayout';
 import OTPTextView from 'react-native-otp-textinput';
 import AuthImage from '../../components/authHeader/authImage';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../util/Colors';
 import { AuthContext } from '../../routes';
+import Toast from 'react-native-toast-message';
 
 const Verification = () => {
-  const {state} = React.useContext(AuthContext);
-  console.log("statevaluuuuu",state)
+  const {signIn,state,state:{unVerifiedUser:{user:{email},verificationPin,accessToken}}} = React.useContext(AuthContext);
+  const [pin,setPin]=useState("");
+  async function fetcData(){
+    await signIn(accessToken);
+    console.log(state,"sdfsdfsdfsdfdsfds");
+  }
+useEffect(() => {
+  console.log("statevaluuuuu",email,verificationPin,accessToken)
 
+ if(pin?.trim() ==verificationPin?.toString()?.trim()){
+  console.log("Verfiedddd",email,verificationPin,accessToken)
+
+  Toast.show({
+    type: 'info',
+    text1: 'Successfully verification done!!!',
+  });
+  fetcData();
+
+ }
+}, [pin])
   return (
      <AuthLayout>
     <View style={styles.Container}>
@@ -18,12 +36,12 @@ const Verification = () => {
       <View style={styles.content}>
         <Text style={styles.emailText}>Verify your personal email id</Text>
         <Text style={styles.description}>
-          Enter the 4 digit code that we have sent to your personal email id
-          name@domain.com for user verification
+          {`Enter the 4 digit code that we have sent to your personal email id
+          ${email} for user verification`}
         </Text>
         <View style={styles.otpContainer}>
         <OTPTextView
-        handleTextChange={(e) => {console.log(e)}}
+        handleTextChange={(value) => setPin(value)}
         containerStyle={styles.textInputContainer}
         textInputStyle={styles.roundedTextInput}
         inputCount={4}
