@@ -30,6 +30,10 @@ import NewPost from './screens/community/newPost';
 import SideMenu from './components/sideMenu';
 import Trending from './screens/Trending';
 import WellnessDetails from './components/homeSlider/wellnessDetails';
+import NewHome from './screens/newScreens/newHome';
+import ConceptIntro from './screens/newScreens/conceptIntro';
+import AppIntro from './screens/newScreens/appIntro';
+import ConceptSlider from './screens/newScreens/ConceptSlider';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,7 +43,7 @@ export const AuthContext = React.createContext();
 const FirstScreenNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 };
@@ -133,8 +137,7 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
       }}
-      initialRouteName='HomeTab'
-      >
+      initialRouteName="HomeTab">
       <Tab.Screen
         name="HomeTab"
         options={{
@@ -216,6 +219,38 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+const NewStackScreen = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen
+        name="ConceptIntro"
+        component={ConceptIntro}
+        options={{headerShown: false}}
+      />
+      {/**begin */}
+      <Stack.Screen
+        name="AppIntro"
+        component={AppIntro}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ConceptSlider"
+        component={ConceptSlider}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Verification"
+        component={Verification}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Forgot"
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
@@ -223,8 +258,10 @@ const DrawerNavigator = () => {
       drawerStyle={{
         width: wp('80%'),
       }}
-      drawerContent={props => <SideMenu {...props} />}>
-      <Drawer.Screen name="HomeDrawer" component={TabNavigator} />
+      // drawerContent={props => <SideMenu {...props} />}
+    >
+      {/*<Drawer.Screen name="HomeDrawer" component={TabNavigator} />*/}
+      <Drawer.Screen name="HomeDrawer" component={NewStackScreen} />
       <Drawer.Screen name="Notifications" component={JournalScreenNavigator} />
     </Drawer.Navigator>
   );
@@ -254,39 +291,38 @@ const Routes = () => {
         case 'UNVERIFIED_SIGN_IN':
           return {
             ...prevState,
-            unVerifiedUser:action.data
-          }
+            unVerifiedUser: action.data,
+          };
       }
     },
     {
       isLoading: true,
       isSignout: false,
       userToken: null,
-      unVerifiedUser:null
+      unVerifiedUser: null,
     },
   );
   const authContext = React.useMemo(
     () => ({
       signIn: async token => {
-        console.log("calleddddsfsdf",state)
-        dispatch({type: 'SIGN_IN', token:token});
+        console.log('calleddddsfsdf', state);
+        dispatch({type: 'SIGN_IN', token: token});
       },
       signOut: () => dispatch({type: 'SIGN_OUT'}),
       signUp: async data => {
         dispatch({type: 'SIGN_IN', token: 'dummy-auth-token'});
       },
-      unVerifiedUser:async data=>{
+      unVerifiedUser: async data => {
         dispatch({type: 'UNVERIFIED_SIGN_IN', data});
-
       },
-      state:state
+      state: state,
     }),
     [state],
   );
-console.log("stattttt",state)
+  console.log('stattttt', state);
   return (
     <AuthContext.Provider value={authContext}>
-      {state.userToken == null ? <AuthScreens /> : <DrawerNavigator />}
+      {state.userToken != null ? <AuthScreens /> : <DrawerNavigator />}
     </AuthContext.Provider>
   );
 };

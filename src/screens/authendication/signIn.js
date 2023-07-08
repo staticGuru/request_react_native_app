@@ -83,7 +83,8 @@ const SignIn = () => {
         </ScrollView>
       </View>
       <View style={styles.footerContainer}>
-        <CustomButton onPress={() => submitSignInForm()} text="Sign In" />
+        {/*<CustomButton onPress={() => submitSignInForm()} text="Sign In" />*/}
+        <CustomButton onPress={() =>{}} text="Sign In" />
 
         <View style={styles.footerView}>
           <Text style={[styles.description, {fontSize: hp('2%')}]}>
